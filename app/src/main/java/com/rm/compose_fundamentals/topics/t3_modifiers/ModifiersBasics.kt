@@ -30,6 +30,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.rm.compose_fundamentals.R
@@ -40,7 +41,15 @@ import com.rm.compose_fundamentals.ui.theme.md_theme_dark_onBackground
 @Preview
 @Composable
 fun PreviewPadding() {
-    PaddingModifier()
+    //PaddingModifierBefore()
+    PaddingModifierAfter()
+}
+
+
+@Preview
+@Composable
+fun PreviewPaddingMultiple() {
+    PaddingMultipleModifier()
 }
 
 @Preview
@@ -106,13 +115,36 @@ fun PreviewModifierOrder() {
     MyCard2(artist = Artist(R.drawable.img, "Avatar", "10:10"))
 }
 
+@Composable
+fun PaddingModifierBefore() {
+    Text(
+        modifier = Modifier
+            .fillMaxWidth()
+            .border(1.dp, Color.Black),
+        text = "Hello There",
+        fontSize = 28.sp
+    )
+}
 
 @Composable
-fun PaddingModifier() {
+fun PaddingModifierAfter() {
+    Text(
+        modifier = Modifier
+            .fillMaxWidth()
+            .border(1.dp, Color.Black)
+            .padding(50.dp),
+        text = "Hello There",
+        fontSize = 28.sp
+    )
+}
+
+
+@Composable
+fun PaddingMultipleModifier() {
     Column(
         modifier = Modifier
             .background(Color.Green)
-            .padding(20.dp)
+            .padding(40.dp)
             .background(Color.Yellow)
             .padding(20.dp)
             .background(Color.Cyan)
