@@ -1,5 +1,6 @@
-package com.rm.compose_fundamentals.topics.t3_effects.launchedeffect.launchedeffectviewmodel
+package com.rm.compose_fundamentals.topics.t5_effects.launchedeffect.launchedeffectviewmodel
 
+import android.media.effect.Effect
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.channels.Channel
@@ -27,9 +28,19 @@ class LaunchedEffectViewModel : ViewModel() {
         viewModelScope.launch {
             _event.collect { event -> // as per event type, setState or setEffect
                 when(event) {
-                    is ScreenEvents.UpdateText -> setState(event.text)
+                    is ScreenEvents.OnUpdateText -> setState(event.text)
 
-                    is ScreenEvents.ButtonClicked -> setEffect()
+                    is ScreenEvents.OnShowSnackBarButtonClicked -> {
+                        setEffect {
+                            ScreenEffects.ShowSnackBar("Hello there")
+                        }
+                    }
+
+                    is ScreenEvents.OnNavigateButtonClicked -> {
+                        setEffect {
+                            ScreenEffects.Navigate("Navigating...")
+                        }
+                    }
                 }
             }
         }
@@ -45,19 +56,21 @@ class LaunchedEffectViewModel : ViewModel() {
         _state.value = state
     }
 
-    private fun setEffect() {
+    private fun setEffect(builder: () -> ScreenEffects) {
+        val effectValue = builder()
         viewModelScope.launch {
-            _effect.send(ScreenEffects.ShowSnackbar("Hello"))
+            _effect.send(effectValue)
         }
     }
 
     sealed class ScreenEvents {
-        data class UpdateText(val text: String) : ScreenEvents()
-        data object ButtonClicked : ScreenEvents()
+        data class OnUpdateText(val text: String) : ScreenEvents()
+        data object OnShowSnackBarButtonClicked : ScreenEvents()
+        data object OnNavigateButtonClicked : ScreenEvents()
     }
 
     sealed class ScreenEffects {
-        data class ShowSnackbar(val message: String) : ScreenEffects()
+        data class ShowSnackBar(val message: String) : ScreenEffects()
         data class Navigate(val route: String) : ScreenEffects()
     }
 }

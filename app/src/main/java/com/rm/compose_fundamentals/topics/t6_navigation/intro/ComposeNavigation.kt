@@ -12,7 +12,6 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.createGraph
 import androidx.navigation.navArgument
 
-
 // Define the MyApp composable, including the `NavController` and `NavHost`.
 private object NavControllerAndNavHost {
     @Composable

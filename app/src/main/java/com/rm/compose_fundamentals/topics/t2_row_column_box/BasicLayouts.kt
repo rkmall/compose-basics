@@ -19,46 +19,63 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.rm.compose_fundamentals.R
-import com.rm.compose_fundamentals.ui.theme.ComposefundamentalsTheme
-
-@Preview
-@Composable
-fun BasicLayoutsPreview() {
-    ComposefundamentalsTheme {
-        //ArtistCardStacked()
-
-        //ArtistCard()
-
-        /*ArtistAvatar(artist = Artist(
-            R.drawable.img,
-            "Jim Dunlop",
-            "3 minutes ago"
-            )
-        )*/
-
-        ArtistCardWithImage(artist = Artist(
-           R.drawable.img,
-           "Jim Dunlop",
-           "3 minutes ago"
-        ))
-
-    }
-}
 
 // Compose stacks Text elements on top of each other.
+@Preview
 @Composable
-fun ArtistCardStacked() {
+fun PreviewDefaultComposeConstraints() {
+    DefaultComposeConstraints()
+}
+
+@Composable
+fun DefaultComposeConstraints() {
     Text("Jim Dunlop")
     Text("Guitar Picks")
 }
 
 // Use standard layout Column to place element vertically.
+@Preview
 @Composable
-fun ArtistCard() {
+fun PreviewUseComposeLayout() {
+   UseComposeLayout()
+}
+
+@Composable
+fun UseComposeLayout() {
     Column {
         Text("Jim Dunlop")
         Text("Guitar Picks")
     }
+}
+
+@Preview
+@Composable
+fun PreviewBoxLayout() {
+    ArtistAvatar(
+        artist = Artist(
+            image = R.drawable.img,
+            name ="Jim Dunlop",
+            lastSeen = "3 minutes ago")
+    )
+}
+
+@Composable
+fun ArtistAvatar(artist: Artist) {
+    Box(contentAlignment = Alignment.BottomEnd) {
+        Image(painterResource(id = artist.image), contentDescription = "Artist image")
+        Icon(Icons.Filled.Check, contentDescription = "Check mark" )
+    }
+}
+
+@Preview
+@Composable
+fun PreviewComposeReused() {
+    ArtistCardWithImage(
+        artist = Artist(
+            image = R.drawable.img,
+            name ="Jim Dunlop",
+            lastSeen = "3 minutes ago")
+    )
 }
 
 @Composable
@@ -81,14 +98,6 @@ fun ArtistCardWithImage(artist: Artist) {
     }
 }
 
-// Reusable Composable
-@Composable
-fun ArtistAvatar(artist: Artist) {
-    Box(contentAlignment = Alignment.BottomEnd) {
-        Image(painterResource(id = artist.image), contentDescription = "Artist image")
-        Icon(Icons.Filled.Check, contentDescription = "Check mark" )
-    }
-}
 
 class Artist(
     @DrawableRes val image: Int,

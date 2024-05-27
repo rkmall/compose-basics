@@ -30,7 +30,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.rm.compose_fundamentals.R
@@ -43,76 +42,6 @@ import com.rm.compose_fundamentals.ui.theme.md_theme_dark_onBackground
 fun PreviewPadding() {
     //PaddingModifierBefore()
     PaddingModifierAfter()
-}
-
-
-@Preview
-@Composable
-fun PreviewPaddingMultiple() {
-    PaddingMultipleModifier()
-}
-
-@Preview
-@Composable
-fun PreviewSize() {
-    SizeModifier()
-}
-
-@Preview
-@Composable
-fun PreviewMaxSizeRequired() {
-    MaxSizeRequiredSize()
-}
-
-
-@Preview
-@Composable
-fun PreviewModifiers2() {
-    OffsetModifier()
-}
-
-@Preview
-@Composable
-fun PreviewModifiers3() {
-   BorderModifier()
-}
-
-@Preview
-@Composable
-fun PreviewModifiers4() {
-    ClickableModifier()
-}
-
-@Preview
-@Composable
-fun PreviewBaseLineModifier() {
-    PaddingBaseLine()
-}
-
-@Preview
-@Composable
-fun PreviewWeightModifierRow() {
-    WeightModifierRow()
-}
-
-@Preview
-@Composable
-fun PreviewWeightModifierColumn() {
-    WeightModifierColumn()
-}
-
-@Preview
-@Composable
-fun PreviewMatchParentModifier() {
-    MatchParentSizeBox()
-}
-
-@Preview
-@Composable
-fun PreviewModifierOrder() {
-    MyCard1(artist = Artist(R.drawable.img, "Avatar", "10:10"))
-
-    MyCard2(artist = Artist(R.drawable.img, "Avatar", "10:10"))
 }
 
 @Composable
@@ -138,6 +67,11 @@ fun PaddingModifierAfter() {
     )
 }
 
+@Preview
+@Composable
+fun PreviewPaddingMultiple() {
+    PaddingMultipleModifier()
+}
 
 @Composable
 fun PaddingMultipleModifier() {
@@ -156,6 +90,12 @@ fun PaddingMultipleModifier() {
     }
 }
 
+@Preview
+@Composable
+fun PreviewSize() {
+    SizeModifier()
+}
+
 @Composable
 fun SizeModifier(modifier: Modifier = Modifier) {
     Column(
@@ -168,8 +108,15 @@ fun SizeModifier(modifier: Modifier = Modifier) {
     }
 }
 
+
+@Preview
 @Composable
-fun MaxSizeRequiredSize(modifier: Modifier = Modifier) {
+fun PreviewMaxSizeRequired() {
+    RequiredSizeModifier()
+}
+
+@Composable
+fun RequiredSizeModifier(modifier: Modifier = Modifier) {
     Column(
         modifier = modifier.fillMaxWidth()
     ) {
@@ -186,6 +133,12 @@ fun MaxSizeRequiredSize(modifier: Modifier = Modifier) {
                 .background(Color.Cyan)
         )
     }
+}
+
+@Preview
+@Composable
+fun PreviewOffsetModifier() {
+    OffsetModifier()
 }
 
 @Composable
@@ -215,6 +168,12 @@ fun OffsetModifier() {
     }
 }
 
+@Preview
+@Composable
+fun PreviewBorderModifier() {
+   BorderModifier()
+}
+
 @Composable
 fun BorderModifier() {
     Column(
@@ -241,6 +200,13 @@ fun BorderModifier() {
             fontWeight = FontWeight.Bold
         )
     }
+}
+
+
+@Preview
+@Composable
+fun PreviewClickableModifier() {
+    ClickableModifier()
 }
 
 @Composable
@@ -279,6 +245,12 @@ fun ClickableModifier() {
     }
 }
 
+@Preview
+@Composable
+fun PreviewBaseLineModifier() {
+    PaddingBaseLine()
+}
+
 @Composable
 fun PaddingBaseLine(modifier: Modifier = Modifier) {
     Column(
@@ -287,6 +259,13 @@ fun PaddingBaseLine(modifier: Modifier = Modifier) {
         Text(text = "Title", modifier.paddingFromBaseline(100.dp))
         Text(text = "Description", modifier.paddingFromBaseline(50.dp, 50.dp))
     }
+}
+
+
+@Preview
+@Composable
+fun PreviewWeightModifierRow() {
+    WeightModifierRow()
 }
 
 @Composable
@@ -312,6 +291,13 @@ fun WeightModifierRow(modifier: Modifier = Modifier) {
     }
 }
 
+
+@Preview
+@Composable
+fun PreviewWeightModifierColumn() {
+    WeightModifierColumn()
+}
+
 @Composable
 fun WeightModifierColumn(modifier: Modifier = Modifier) {
     Row(
@@ -335,6 +321,12 @@ fun WeightModifierColumn(modifier: Modifier = Modifier) {
     }
 }
 
+@Preview
+@Composable
+fun PreviewMatchParentModifier() {
+    MatchParentSizeBox()
+}
+
 @Composable
 fun MatchParentSizeBox(modifier: Modifier = Modifier) {
     Box(
@@ -348,6 +340,12 @@ fun MatchParentSizeBox(modifier: Modifier = Modifier) {
             .background(Color.Yellow)
         )
     }
+}
+
+@Preview
+@Composable
+fun PreviewModifierOrder() {
+    MyCard1(artist = Artist(R.drawable.img, "Avatar", "10:10"))
 }
 
 @Composable
@@ -371,24 +369,5 @@ fun MyCard2(artist: Artist, modifier: Modifier = Modifier) {
             .background(md_theme_dark_onBackground)
     ) {
         ArtistCardWithImage(artist = artist)
-    }
-}
-
-@Composable
-fun ReusableScopedModifier() {
-    Column(
-        modifier = Modifier
-            .background(Color.Cyan)
-            .fillMaxWidth(),
-    ) {
-        // modifier variable inside the Column scope
-        val reusableModifier = Modifier
-            .padding(12.dp)
-            .align(Alignment.CenterHorizontally)
-            .size(100.dp)
-            .background(Color.Yellow)
-
-        Text(text = "Title", modifier = reusableModifier )
-        Text(text = "Description", modifier = reusableModifier)
     }
 }

@@ -12,19 +12,15 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.captionBar
-import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imeNestedScroll
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.systemBarsPadding
-import androidx.compose.foundation.layout.waterfall
 import androidx.compose.foundation.layout.windowInsetsBottomHeight
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.layout.windowInsetsTopHeight
@@ -32,7 +28,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
-import androidx.compose.material.TextFieldColors
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -44,21 +39,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.rm.compose_fundamentals.topics.t8_mvi.favorite.FavoriteViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.rm.compose_fundamentals.topics.t8_mvi.SearchTextField
+import com.rm.compose_fundamentals.topics.t8_mvi.SearchViewModel
 import com.rm.compose_fundamentals.ui.theme.ComposefundamentalsTheme
 
 class MainActivity : ComponentActivity() {
 
-    private val viewModel: FavoriteViewModel by viewModels()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         enableEdgeToEdge()
+
+        //val searchViewModel by viewModels<SearchViewModel>()
 
         setContent {
             ComposefundamentalsTheme {
-
                 //WindowInsetsEdgeToEdge()
                 //WindowInsetsSystemBarsAsPadding()
                 //WindowInsetsStatusBarsAsPadding()
@@ -71,20 +66,7 @@ class MainActivity : ComponentActivity() {
 
                 //ConsumeInset()
 
-                //CupcakeApp()
-                //GetTextScreen()
-                //TextFieldDemo()
-
-                /*StartView(
-                    viewModel = viewModel,
-                    onFavorite = {
-                        if (viewModel.state.favorite) {
-                            viewModel.onUnFavorite()
-                        } else {
-                            viewModel.onFavorite()
-                        }
-                    }
-                )*/
+                //SearchTextField(viewModel = searchViewModel)
             }
         }
     }

@@ -1,10 +1,9 @@
-package com.rm.compose_fundamentals.topics.t3_effects
+package com.rm.compose_fundamentals.topics.t5_effects
 
 import android.util.Log
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.SnapshotMutationPolicy
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

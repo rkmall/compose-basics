@@ -61,7 +61,6 @@ fun PreviewVolumeBar() {
     VolumeBar()
 }
 
-
 @Composable
 fun VolumeKnobWithBar() {
     Box(
@@ -139,8 +138,8 @@ fun VolumeKnob(
             .fillMaxSize()
             .onGloballyPositioned {
                 val windowBounds = it.boundsInWindow()
-                centerX = windowBounds.size.width / 2f      // div by 2f to get center
-                centerY = windowBounds.size.height / 2f     // div by 2f to get center
+                centerX = windowBounds.size.width / 2f   // div by 2f to get center
+                centerY = windowBounds.size.height / 2f  // div by 2f to get center
 
             }
             .pointerInteropFilter { touchEvent ->

@@ -1,4 +1,4 @@
-package com.rm.compose_fundamentals.topics.t3_effects
+package com.rm.compose_fundamentals.topics.t5_effects
 
 import android.util.Log
 import androidx.compose.runtime.Composable

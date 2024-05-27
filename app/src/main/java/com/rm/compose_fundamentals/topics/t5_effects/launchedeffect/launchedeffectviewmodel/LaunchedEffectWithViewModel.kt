@@ -1,5 +1,7 @@
-package com.rm.compose_fundamentals.topics.t3_effects.launchedeffect.launchedeffectviewmodel
+package com.rm.compose_fundamentals.topics.t5_effects.launchedeffect.launchedeffectviewmodel
 
+import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -15,7 +17,6 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -23,11 +24,11 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.onEach
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import kotlinx.coroutines.launch
 
 val viewModel = LaunchedEffectViewModel()
@@ -48,19 +49,34 @@ fun PreviewLaunchedEffectWithViewModel() {
 @Composable
 fun LaunchedEffectWithViewModel(
     viewModel: LaunchedEffectViewModel,
-    onButtonClicked: (LaunchedEffectViewModel.ScreenEvents) -> Unit
+    onEventSent: (LaunchedEffectViewModel.ScreenEvents) -> Unit
 ) {
-    var text by remember { mutableStateOf("") }
+    Log.d("launch", "Composition entered...")
 
+    var text by remember { mutableStateOf("") }
     val snackBarHostState = remember { SnackbarHostState() }
 
-    val viewModelText by viewModel.state.collectAsState()
+    /**
+     * States outside Composable (in this case, StateFlow hosted in ViewModel) can be directly
+     * inside Composable as Compose State<T> with lifecycle
+     */
+    val viewModelText by viewModel.state.collectAsStateWithLifecycle()
 
-    // ViewModel methods should be always called inside LaunchedEffect or CoroutineScope
+    val context = LocalContext.current
+    
+    /**
+     * LaunchedEffect is invoked when this Composable enter the composition.
+     * Then, LaunchedEffect launches coroutine block in the Composition CoroutineContext.
+     * This coroutine remains active through out the Composition and
+     * will be cancelled when the LaunchedEffect leaves the Composition.
+     */
     LaunchedEffect(key1 = Unit) {
+        Log.d("launch", "LaunchedEffect called")
+
         viewModel.effect.collect { effect -> // observe effect if any
             when(effect) {
-                is LaunchedEffectViewModel.ScreenEffects.ShowSnackbar -> {
+                is LaunchedEffectViewModel.ScreenEffects.ShowSnackBar -> {
+                    Log.d("launch", "Displaying snackBar")
                     snackBarHostState.showSnackbar(
                         message = effect.message,
                         actionLabel = "OK",
@@ -68,7 +84,9 @@ fun LaunchedEffectWithViewModel(
                     )
                 }
 
-                is LaunchedEffectViewModel.ScreenEffects.Navigate -> {}
+                is LaunchedEffectViewModel.ScreenEffects.Navigate -> {
+                    Toast.makeText(context, effect.route, Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
@@ -97,15 +115,20 @@ fun LaunchedEffectWithViewModel(
             Spacer(modifier = Modifier.height(40.dp))
 
             // Send event up the UI tree
-            Button(onClick = { onButtonClicked(LaunchedEffectViewModel.ScreenEvents.UpdateText(text)) }) {
+            Button(onClick = { onEventSent(LaunchedEffectViewModel.ScreenEvents.OnUpdateText(text)) }) {
                 Text(text = "Update Text")
             }
-
             Spacer(modifier = Modifier.height(40.dp))
 
             // Send event up the UI tree
-            Button(onClick = { onButtonClicked(LaunchedEffectViewModel.ScreenEvents.ButtonClicked) }) {
+            Button(onClick = { onEventSent(LaunchedEffectViewModel.ScreenEvents.OnShowSnackBarButtonClicked) }) {
                 Text(text = "Show SnackBar")
+            }
+            Spacer(modifier = Modifier.height(40.dp))
+
+            // Send event up the UI tree
+            Button(onClick = { onEventSent(LaunchedEffectViewModel.ScreenEvents.OnNavigateButtonClicked) }) {
+                Text(text = "Navigate")
             }
         }
     }

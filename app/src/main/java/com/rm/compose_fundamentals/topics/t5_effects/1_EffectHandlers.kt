@@ -1,8 +1,8 @@
-package com.rm.compose_fundamentals.topics.t3_effects
+package com.rm.compose_fundamentals.topics.t5_effects
 
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -11,19 +11,17 @@ import androidx.compose.ui.tooling.preview.Preview
 
 @Preview
 @Composable
-fun PreviewSideEffectEx() {
-    SideEffectEx(nonComposeCounter = 10)
+fun PreviewComposableWithSideEffect() {
+    ComposableWithSideEffect()
 }
 
+private var i = 0
 @Composable
-fun SideEffectEx(nonComposeCounter: Int) {
-    
+fun ComposableWithSideEffect() {
     var text by remember { mutableStateOf("") }
-    
-    SideEffect {
-        println("Called after every successful recomposition")
-        text = nonComposeCounter.toString()
+
+    Button(onClick = { text += "#"}) {
+        i++  // side-effect that escapes the scope of Composable
+        Text(text = "$text $i")
     }
-    
-    Text(text = text)
 }

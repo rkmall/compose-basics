@@ -1,4 +1,4 @@
-package com.rm.compose_fundamentals.topics.t5_composition_local
+package com.rm.compose_fundamentals.topics.t8_composition_local
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth

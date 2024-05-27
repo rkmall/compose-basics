@@ -32,7 +32,6 @@ private fun PreviewExample3() {
     Example3()
 }
 
-
 @Composable
 private fun Example1() {
     Image(
@@ -43,7 +42,7 @@ private fun Example1() {
             .fillMaxSize()
             // size has no effect even if it wants to set it to 50.dp since it still
             // needs to adhere to the incoming constraint ignoring the value provided
-            .size(50.dp)
+            .size(10.dp)
     )
 }
 
@@ -82,4 +81,3 @@ private fun Example3() {
             .size(100.dp)
     )
 }
-
