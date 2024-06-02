@@ -1,4 +1,4 @@
-package com.rm.compose_fundamentals.topics.t7_components.examples
+package com.rm.compose_fundamentals.topics.t7_components.appbar
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
@@ -36,16 +36,33 @@ import androidx.compose.ui.unit.dp
 
 @Preview
 @Composable
-fun AppbarsPreview() {
-
-    //SmallTopAppBarExample()
-    //CenterAlignedTopAppBarExample()
-    //MediumTopAppBarExample()
-    //LargeTopAppBarExample()
-    //BottomAppBarExample()
+fun PreviewSmallTopAppbar() {
+    SmallTopAppBarExample()
 }
 
+@Preview
+@Composable
+fun PreviewCenterAlignedTopAppbar() {
+    CenterAlignedTopAppBarExample()
+}
 
+@Preview
+@Composable
+fun PreviewMediumTopAppbar() {
+    MediumTopAppBarExample()
+}
+
+@Preview
+@Composable
+fun PreviewLargeTopAppbar() {
+    LargeTopAppBarExample()
+}
+
+@Preview
+@Composable
+fun PreviewBottomAppbar() {
+    BottomAppBarExample()
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

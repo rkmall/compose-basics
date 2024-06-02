@@ -1,4 +1,4 @@
-package com.rm.compose_fundamentals.topics.t7_components.examples
+package com.rm.compose_fundamentals.topics.t7_components.card
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image

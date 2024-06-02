@@ -1,4 +1,4 @@
-package com.rm.compose_fundamentals.topics.t7_components.examples
+package com.rm.compose_fundamentals.topics.t7_components.button
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape

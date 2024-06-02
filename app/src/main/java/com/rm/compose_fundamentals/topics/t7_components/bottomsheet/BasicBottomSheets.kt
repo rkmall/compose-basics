@@ -1,6 +1,9 @@
-package com.rm.compose_fundamentals.topics.t7_components.examples
+package com.rm.compose_fundamentals.topics.t7_components.bottomsheet
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -19,8 +22,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.launch
 
 @Preview
@@ -29,25 +34,20 @@ fun BottomSheetsPreview() {
     ModalBottomSheetExample()
 }
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun ModalBottomSheetExample() {
     /**
-     * Variable to track expand or collapse sheet state.
-     * It provides access to various functions and properties
-     * related to the current sheet state.
-     *
-     * However the provided functions are suspend functions therefore,
-     * a CoroutineScope is required to invoke sheetState functions.
+     * Variable to track expand/collapse sheet state.
+     * It provides access to various functions and properties related to the current sheet state.
+     * However the sheetState functions are suspend functions therefore, CoroutineScope
+     * is required to invoke sheetState functions.
      */
     val sheetState = rememberModalBottomSheetState()
-
-    // CoroutineScope to invoke sheetState functions
-    val scope = rememberCoroutineScope()
-
     var showBottomSheet by remember { mutableStateOf(false) }
+
+    val scope = rememberCoroutineScope()
 
     Scaffold(
         floatingActionButton = {
@@ -62,22 +62,32 @@ fun ModalBottomSheetExample() {
             }
         }
     ) {
-        // Screen content
         if (showBottomSheet) {
             ModalBottomSheet(
-                onDismissRequest = { showBottomSheet = false }, // when user clicks outside the bottom sheet
-                sheetState = sheetState
+                onDismissRequest = { showBottomSheet = false }, // for clicks outside the bottom sheet
+                sheetState = sheetState,
             ) {
-                // Sheet content
-                Button(onClick = {
-                    // sheetState functions are suspending
-                    scope.launch { sheetState.hide() }.invokeOnCompletion {
-                        if (!sheetState.isVisible) {
-                            showBottomSheet = false
+                Text(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    text = "Bottom Sheet",
+                    fontSize = 20.sp,
+                    textAlign = TextAlign.Center
+                )
+                Spacer(modifier = Modifier.height(20.dp))
+                Button(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 24.dp, horizontal = 38.dp),
+                    onClick = {
+                        scope.launch { sheetState.hide() }.invokeOnCompletion {
+                            if (!sheetState.isVisible) {
+                                showBottomSheet = false
+                            }
                         }
                     }
-                }) {
-                    Text(text = "Hide bottom Sheet")
+                ) {
+                    Text(text = "Hide Bottom Sheet")
                 }
             }
         }

@@ -1,4 +1,4 @@
-package com.rm.compose_fundamentals.topics.t7_components.examples
+package com.rm.compose_fundamentals.topics.t7_components.navigation.navigationdrawer
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -31,15 +31,11 @@ import kotlinx.coroutines.launch
 @Preview
 @Composable
 fun NavigationDrawersPreview() {
-
     NavigationDrawerExample(rowItemsContent())
 }
 
-
-
 @Composable
 fun NavigationDrawerExample(items: List<Pair<String, ImageVector>>) {
-
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
 

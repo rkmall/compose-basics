@@ -1,4 +1,4 @@
-package com.rm.compose_fundamentals.topics.t7_components.examples
+package com.rm.compose_fundamentals.topics.t7_components.dialog
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -10,13 +10,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -36,14 +33,33 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.rm.compose_fundamentals.R
 
-
-
 @Preview
 @Composable
 fun PreviewDisplayAlertDialog() {
     DisplayAlertDialog()
 }
 
+@Preview
+@Composable
+fun PreviewDialog() {
+    DialogExample(
+        painter = painterResource(id = R.drawable.cupcake),
+        imageDescription = "Cupcake"
+    )
+}
+
+@Preview
+@Composable
+fun PreviewAlertDialog() {
+    AlertDialogExample(
+        onDismissRequest = {},
+        onConfirmation = {},
+        dialogTitle = "Confirm Deletion" ,
+        dialogText = "Are you sure you want to delete this task?" ,
+        icon = Icons.Default.Info ,
+        iconDescription = "Delete"
+    )
+}
 
 @Composable
 fun DisplayAlertDialog() {
@@ -73,18 +89,6 @@ fun DisplayAlertDialog() {
     }
 }
 
-@Preview
-@Composable
-fun PreviewAlertDialog() {
-    AlertDialogExample(
-        onDismissRequest = {},
-        onConfirmation = {},
-        dialogTitle = "Confirm Deletion" ,
-        dialogText = "Are you sure you want to delete this task?" ,
-        icon = Icons.Default.Info ,
-        iconDescription = "Delete"
-    )
-}
 
 @Composable
 fun AlertDialogExample(
@@ -118,18 +122,6 @@ fun AlertDialogExample(
     )
 }
 
-
-
-@Preview
-@Composable
-fun PreviewDialog() {
-    DialogExample(
-        painter = painterResource(id = R.drawable.cupcake),
-        imageDescription = "Cupcake"
-    )
-}
-
-
 @Composable
 fun DialogExample(
     onDismissRequest: () -> Unit = {},
@@ -138,9 +130,7 @@ fun DialogExample(
     imageDescription: String,
 
     ) {
-    Dialog(
-        onDismissRequest = { onDismissRequest() }
-    ) {
+    Dialog(onDismissRequest = { onDismissRequest() }) {
         Card(
             modifier = Modifier
                 .fillMaxWidth()

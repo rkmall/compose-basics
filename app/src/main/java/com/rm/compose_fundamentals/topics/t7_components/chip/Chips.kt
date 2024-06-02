@@ -1,4 +1,4 @@
-package com.rm.compose_fundamentals.topics.t7_components.examples
+package com.rm.compose_fundamentals.topics.t7_components.chip
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
@@ -23,11 +23,22 @@ import androidx.compose.ui.tooling.preview.Preview
 
 @Preview
 @Composable
-fun ChipsPreview() {
-    //AssistChipExample()
-    //FilterChipExample()
+fun PreviewAssistChip() {
+    AssistChipExample()
+}
+
+@Preview
+@Composable
+fun PreviewFilterChip() {
+    FilterChipExample()
+}
+
+@Preview
+@Composable
+fun PreviewInputChip() {
     InputChipExample()
 }
+
 
 
 @Composable

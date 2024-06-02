@@ -1,4 +1,4 @@
-package com.rm.compose_fundamentals.topics.t7_components.examples
+package com.rm.compose_fundamentals.topics.t7_components.lazylist
 
 
 import androidx.compose.foundation.Image
@@ -251,9 +251,7 @@ fun GuitarCard(
             containerColor = MaterialTheme.colorScheme.surface
         )
     ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically
-        ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
             Image(
                 painter = painterResource(id = imgRes) ,
                 contentDescription = "Guitar",
@@ -263,9 +261,7 @@ fun GuitarCard(
                 contentScale = ContentScale.Crop
             )
 
-            Column(
-                verticalArrangement = Arrangement.spacedBy(10.dp)
-            ) {
+            Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 Text(
                     modifier = Modifier.fillMaxWidth(),
                     text = name,
@@ -273,6 +269,7 @@ fun GuitarCard(
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onSurface
                 )
+
                 Text(
                     modifier = Modifier.fillMaxWidth(),
                     text = description,
