@@ -12,28 +12,59 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.createGraph
 import androidx.navigation.navArgument
 
-// Define the MyApp composable, including the `NavController` and `NavHost`.
 private object NavControllerAndNavHost {
     @Composable
     fun MyApp() {
-        // Create NavController
+        /**
+         * NavController should be placed in the top level Composable hierarchy so that
+         * it is accessible to all the children Composables down the hierarchy.
+         */
         val navController = rememberNavController()
 
-        // Create NavHost
+        /**
+         * NavHost takes NavController and startDestination route.
+         * NavHost is used to create NavGraph. Under the hood, NavHost calls
+         * NavController.createGraph using startDestination and NavGraphBuilder scope and returns NavGraph.
+         * The calls to NavGraphBuilder.composable() add destinations to NavGraph.
+         */
         NavHost(
             navController =  navController,
             startDestination = "profile"
         ) {
             composable(
                 route = "profile/{userId}",
-                content = { ProfileScreen { navController.navigate(route = "friendList") } },
-                arguments = listOf(navArgument("userId") {type = NavType.StringType})
+                content = {
+                    Profile { navController.navigate(route = "settings") }
+                },
+                arguments = listOf(navArgument("userId") { type = NavType.StringType })
             )
 
             composable(
                 route = "friendList",
-                content = { FriendListScreen { navController.navigate(route = "profile") } },
+                content = {
+                    Settings { navController.navigate(route = "profile") }
+                },
             )
+        }
+    }
+}
+
+@Composable
+fun Profile(onNavigateToSettings: () -> Unit) {
+    Column {
+        Text("Profile")
+        Button(onClick = { onNavigateToSettings() }) {
+            Text("Go to Settings")
+        }
+    }
+}
+
+@Composable
+fun Settings(onNavigateToProfile: () -> Unit) {
+    Column {
+        Text("Settings")
+        Button(onClick = { onNavigateToProfile() }) {
+            Text("Go to Profile")
         }
     }
 }
@@ -47,37 +78,15 @@ private object AlternativeWayToCreateNavGraph {
             navController.createGraph(startDestination = "profile") {
                 composable(
                     route = "profile",
-                    content = { ProfileScreen { navController.navigate(route = "friendList") } }
+                    content = { Profile { navController.navigate(route = "friendList") } }
                 )
 
                 composable(
                     route = "friendList",
-                    content = { FriendListScreen { navController.navigate(route = "profile") } }
+                    content = { Settings { navController.navigate(route = "profile") } }
                 )
             }
         }
         NavHost(navController, navGraph )
-    }
-}
-
-// Define the Profile composable.
-@Composable
-fun ProfileScreen(onNavigateToFriendsList: () -> Unit) {
-    Column {
-        Text("Profile")
-        Button(onClick = { onNavigateToFriendsList() }) {
-            Text("Go to Friends List")
-        }
-    }
-}
-
-// Define the FriendsList composable.
-@Composable
-fun FriendListScreen(onNavigateToProfile: () -> Unit) {
-    Column {
-        Text("Friends List")
-        Button(onClick = { onNavigateToProfile() }) {
-            Text("Go to Profile")
-        }
     }
 }

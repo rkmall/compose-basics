@@ -1,4 +1,4 @@
-package com.rm.compose_fundamentals.topics.t7_components.navigation.bottomsheetnavigation.usingbottombar
+package com.rm.compose_fundamentals.topics.t7_components.navigation.bottomnavigation.usingbottomappbar
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Box
@@ -29,22 +29,22 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.rm.compose_fundamentals.topics.t7_components.navigation.bottomsheetnavigation.screen.Home
-import com.rm.compose_fundamentals.topics.t7_components.navigation.bottomsheetnavigation.screen.Notification
-import com.rm.compose_fundamentals.topics.t7_components.navigation.bottomsheetnavigation.screen.Post
-import com.rm.compose_fundamentals.topics.t7_components.navigation.bottomsheetnavigation.screen.Profile
-import com.rm.compose_fundamentals.topics.t7_components.navigation.bottomsheetnavigation.screen.Settings
+import com.rm.compose_fundamentals.topics.t7_components.navigation.bottomnavigation.screen.Home
+import com.rm.compose_fundamentals.topics.t7_components.navigation.bottomnavigation.screen.Notification
+import com.rm.compose_fundamentals.topics.t7_components.navigation.bottomnavigation.screen.Post
+import com.rm.compose_fundamentals.topics.t7_components.navigation.bottomnavigation.screen.Profile
+import com.rm.compose_fundamentals.topics.t7_components.navigation.bottomnavigation.screen.Settings
 
 
 @Preview
 @Composable
 fun PreviewBottomNavigationExample() {
-    BottomNavigationExample()
+    CustomBottomNavigation()
 }
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun BottomNavigationExample() {
+fun CustomBottomNavigation() {
     val navController = rememberNavController()
     var selectedNavIcon by remember { mutableStateOf(Icons.Default.Home) }
 
@@ -124,6 +124,7 @@ fun BottomNavigationExample() {
                         tint = if (selectedNavIcon == Icons.Default.Person) Color.White else Color.DarkGray
                     )
                 }
+
                 IconButton(
                     modifier = Modifier
                         .weight(1f),
@@ -147,7 +148,8 @@ fun BottomNavigationExample() {
         NavHost(
             modifier = Modifier.padding(it),
             navController = navController,
-            startDestination = BottomNavRoute.Home.route) {
+            startDestination = BottomNavRoute.Home.route
+        ) {
             composable(BottomNavRoute.Home.route) { Home() }
             composable(BottomNavRoute.Notification.route) { Notification() }
             composable(BottomNavRoute.Post.route) { Post() }

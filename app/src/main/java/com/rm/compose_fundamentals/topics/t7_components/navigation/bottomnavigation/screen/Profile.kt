@@ -1,6 +1,5 @@
-package com.rm.compose_fundamentals.topics.t7_components.navigation.bottomsheetnavigation.screen
+package com.rm.compose_fundamentals.topics.t7_components.navigation.bottomnavigation.screen
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,12 +15,12 @@ import androidx.compose.ui.unit.sp
 
 @Preview
 @Composable
-fun PreviewMessageScreen() {
-    Notification()
+fun PreviewProfileScreen() {
+    Profile()
 }
 
 @Composable
-fun Notification() {
+fun Profile() {
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
             modifier = Modifier
@@ -31,7 +30,7 @@ fun Notification() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "Notification",
+                text = "Profile",
                 fontSize = 30.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.Black

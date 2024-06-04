@@ -1,4 +1,4 @@
-package com.rm.compose_fundamentals.topics.t7_components.navigation.bottomsheetnavigation.usingbottombar
+package com.rm.compose_fundamentals.topics.t7_components.navigation.bottomnavigation.usingbottomappbar
 
 
 sealed class BottomNavRoute(val route: String) {

@@ -1,4 +1,4 @@
-package com.rm.compose_fundamentals.topics.t7_components.navigation.bottomsheetnavigation.screen
+package com.rm.compose_fundamentals.topics.t7_components.navigation.bottomnavigation.screen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -15,12 +15,12 @@ import androidx.compose.ui.unit.sp
 
 @Preview
 @Composable
-fun PreviewProfileScreen() {
-    Profile()
+fun PreviewPostScreen() {
+    Post()
 }
 
 @Composable
-fun Profile() {
+fun Post() {
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
             modifier = Modifier
@@ -30,7 +30,7 @@ fun Profile() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "Profile",
+                text = "Post",
                 fontSize = 30.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.Black

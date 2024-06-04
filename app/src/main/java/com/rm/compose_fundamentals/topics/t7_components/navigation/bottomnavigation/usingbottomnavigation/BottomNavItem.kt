@@ -1,4 +1,4 @@
-package com.rm.compose_fundamentals.topics.t7_components.navigation.bottomsheetnavigation.usingbottomnav
+package com.rm.compose_fundamentals.topics.t7_components.navigation.bottomnavigation.usingbottomnavigation
 
 
 import androidx.compose.material.icons.Icons
@@ -8,7 +8,6 @@ import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.ui.graphics.vector.ImageVector
-
 
 sealed class BottomNavItem(
     val route: String,

@@ -1,6 +1,5 @@
-package com.rm.compose_fundamentals.topics.t7_components.navigation.bottomsheetnavigation.screen
+package com.rm.compose_fundamentals.topics.t7_components.navigation.bottomnavigation.screen
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,12 +15,12 @@ import androidx.compose.ui.unit.sp
 
 @Preview
 @Composable
-fun PreviewSettingsScreen() {
-    Settings()
+fun PreviewHomeScreen() {
+    Home()
 }
 
 @Composable
-fun Settings() {
+fun Home() {
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
             modifier = Modifier
@@ -31,7 +30,7 @@ fun Settings() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "Settings",
+                text = "Home",
                 fontSize = 30.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.Black

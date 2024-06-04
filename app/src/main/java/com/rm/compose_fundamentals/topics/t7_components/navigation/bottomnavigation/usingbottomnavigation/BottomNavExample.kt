@@ -1,4 +1,4 @@
-package com.rm.compose_fundamentals.topics.t7_components.navigation.bottomsheetnavigation.usingbottomnav
+package com.rm.compose_fundamentals.topics.t7_components.navigation.bottomnavigation.usingbottomnavigation
 
 import android.annotation.SuppressLint
 import androidx.compose.material.BottomNavigation
@@ -16,19 +16,18 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.rm.compose_fundamentals.topics.t7_components.navigation.bottomsheetnavigation.screen.Home
-import com.rm.compose_fundamentals.topics.t7_components.navigation.bottomsheetnavigation.screen.Notification
-import com.rm.compose_fundamentals.topics.t7_components.navigation.bottomsheetnavigation.screen.Post
-import com.rm.compose_fundamentals.topics.t7_components.navigation.bottomsheetnavigation.screen.Profile
-import com.rm.compose_fundamentals.topics.t7_components.navigation.bottomsheetnavigation.screen.Settings
-import com.rm.compose_fundamentals.topics.t7_components.navigation.bottomsheetnavigation.usingbottombar.BottomNavRoute
+import com.rm.compose_fundamentals.topics.t7_components.navigation.bottomnavigation.screen.Home
+import com.rm.compose_fundamentals.topics.t7_components.navigation.bottomnavigation.screen.Notification
+import com.rm.compose_fundamentals.topics.t7_components.navigation.bottomnavigation.screen.Post
+import com.rm.compose_fundamentals.topics.t7_components.navigation.bottomnavigation.screen.Profile
+import com.rm.compose_fundamentals.topics.t7_components.navigation.bottomnavigation.screen.Settings
+import com.rm.compose_fundamentals.topics.t7_components.navigation.bottomnavigation.usingbottomappbar.BottomNavRoute
 
 @Preview
 @Composable
 fun PreviewMainScreen() {
     MainScreen()
 }
-
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -77,10 +76,10 @@ fun MBottomNavigation(navController: NavController) {
         navigationItems.forEach { item ->
             BottomNavigationItem(
                 icon = {
-                       Icon(imageVector = item.icon, contentDescription = item.route)
+                       Icon(imageVector = item.icon, contentDescription = item.title)
                 },
                 selectedContentColor = Color.Black,
-                unselectedContentColor = Color.Black.copy(0.4f),
+                unselectedContentColor = Color.Black.copy(0.5f),
                 selected = currentRoute == item.route,
                 onClick = {
                     navController.navigate(item.route) {
