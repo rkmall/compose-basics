@@ -40,14 +40,12 @@ private object CompositionOrderWarning {
         onClick: () -> Unit
     ) {
         /**
-         * Parameter "text" only serves as initial value for state "name"
-         * inside the mutableStateOf().
-         *
-         * Parent composable above observe the state "textState" and passes to
-         * this Composable, it doesn't have any effect because state "name" only uses
-         * parameter "text" to set initial value.
+         * Parameter "text" only serves as initial value for internal state "name"
+         * - Parent composable above observe the state "textState" and passes to
+         *   this Composable, it doesn't have any effect because state "name" only uses
+         *   parameter "text" to set initial value.
          */
-        //val name by remember { mutableStateOf(text) } // This doesn't work
+        //val name by remember { mutableStateOf(text) } // this doesn't work
 
         /**
          * To update state "name" when parameter "text" changes, use the parameter as

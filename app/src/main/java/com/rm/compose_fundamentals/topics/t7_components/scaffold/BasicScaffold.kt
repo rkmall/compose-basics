@@ -34,12 +34,12 @@ fun ScaffoldExamplePreview() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScaffoldExample() {
-
-    // remember prevents 'presses' from changing due to recomposition.
-    // It is calculated at initial composition.
-    // While, mutableStatOf makes 'presses' observable mutable data
     var presses by remember { mutableIntStateOf(0) }
 
+    /**
+     * Scaffold is a basic layout for arranging material components in common patterns
+     * such as the screen with topBar, content, bottomBar and fab.
+     */
     Scaffold(
         topBar = {
             TopAppBar(

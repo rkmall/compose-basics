@@ -1,4 +1,4 @@
-package com.rm.compose_fundamentals.topics.t2_row_column_box
+package com.rm.compose_fundamentals.topics.t2_layouts
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image

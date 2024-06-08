@@ -61,7 +61,7 @@ class MainActivity : ComponentActivity() {
 
                 //WindowInsetsSize()
 
-                //HandleIMEInsetPaddingInChild()
+                HandleIMEInsetPaddingInChild()
                 //HandleIMEInsetPaddingUpTheHierarchy()
 
                 //ConsumeInset()
@@ -162,7 +162,6 @@ fun HandleIMEInsetPaddingInChild() {
         modifier = Modifier
             .fillMaxSize()
             .systemBarsPadding() // apply systemBars as padding
-            .imePadding()
     ) {
         LazyColumn(
             modifier = Modifier

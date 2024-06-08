@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -28,7 +29,7 @@ import kotlin.random.Random
 @Preview
 @Composable
 fun PreviewRemember1() {
-    RememberTest()
+    RememberTest("Jim")
 }
 
 @Preview
@@ -57,10 +58,24 @@ fun PreviewRemember5() {
 }
 
 @Composable
-fun RememberTest() {
-    // remember saves the 'text' value and returns the same value until explicitly changed
-    // mutableStateOf makes the value observable and mutable
-    var text by remember { mutableStateOf("Hello") } // INTERNAL STATE
+fun RememberTest(name: String) {
+    /**
+     * Use mutableStateOf to add internal state in the Composable and use remember()
+     * to save the internal state across recompositions.
+     *
+     * - MutableState are observable types that trigger UI updates (recompositions)
+     *   whenever the values changes.
+     *
+     * Recompositions can happen any time which would call the Composable again.
+     * If remember is not used, the internal state is reset to the initial value
+     * everytime the function recomposes.
+     *
+     *  - Remember saves the internal state across recompositions until explicitly changed.
+     *    Remember is guard against the recompositions so that the state is not reset.
+     *
+     * Internal state is like a private variable in a class.
+     */
+    var expanded by remember { mutableStateOf(false) } // INTERNAL STATE
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -68,15 +83,27 @@ fun RememberTest() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = text,
+            text = "Hello $name",
             fontSize = 28.sp
         )
 
         Spacer(modifier = Modifier.size(30.dp))
 
-        val onClick: () -> Unit = { text = "Bye" }
-        Button(onClick = onClick) {
-            Text(text = "Click Me")
+        Button(
+            onClick = { expanded = !expanded }
+        ) {
+            Text(
+                text = if (expanded) "Show less" else "Show more"
+            )
+        }
+
+        if (expanded) {
+            Text(
+                modifier = Modifier
+                    .padding(24.dp),
+                text = "Good morning",
+                fontSize = 24.sp
+            )
         }
     }
 }
@@ -140,12 +167,6 @@ fun ColorBoxExternalState() {
         )
     }
 }
-
-
-
-
-
-
 
 @SuppressLint("UnrememberedMutableState")
 @Composable

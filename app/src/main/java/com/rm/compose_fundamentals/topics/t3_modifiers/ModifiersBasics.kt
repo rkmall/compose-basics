@@ -33,8 +33,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.rm.compose_fundamentals.R
-import com.rm.compose_fundamentals.topics.t2_row_column_box.Artist
-import com.rm.compose_fundamentals.topics.t2_row_column_box.ArtistCardWithImage
+import com.rm.compose_fundamentals.topics.t2_layouts.Artist
+import com.rm.compose_fundamentals.topics.t2_layouts.ArtistCardWithImage
 import com.rm.compose_fundamentals.ui.theme.md_theme_dark_onBackground
 
 @Preview
@@ -260,7 +260,6 @@ fun PaddingBaseLine(modifier: Modifier = Modifier) {
         Text(text = "Description", modifier.paddingFromBaseline(50.dp, 50.dp))
     }
 }
-
 
 @Preview
 @Composable

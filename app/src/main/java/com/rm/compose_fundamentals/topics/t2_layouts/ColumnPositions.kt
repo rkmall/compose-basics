@@ -1,4 +1,4 @@
-package com.rm.compose_fundamentals.topics.t2_row_column_box
+package com.rm.compose_fundamentals.topics.t2_layouts
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -25,7 +25,7 @@ fun PreviewColumnsPositions() {
 
     //ColumnAlignmentStart()
     //ColumnAlignmentCenterHorizontally()
-    ColumnAlignmentEnd()
+    //ColumnAlignmentEnd()
 }
 
 @Composable

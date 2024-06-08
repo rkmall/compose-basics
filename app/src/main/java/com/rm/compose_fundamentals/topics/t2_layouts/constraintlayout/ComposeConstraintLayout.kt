@@ -1,4 +1,4 @@
-package com.rm.compose_fundamentals.topics.t2_row_column_box.constraintlayout
+package com.rm.compose_fundamentals.topics.t2_layouts.constraintlayout
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
