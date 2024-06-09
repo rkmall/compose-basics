@@ -344,7 +344,7 @@ fun MatchParentSizeBox(modifier: Modifier = Modifier) {
 @Preview
 @Composable
 fun PreviewModifierOrder() {
-    MyCard1(artist = Artist(R.drawable.img, "Avatar", "10:10"))
+    MyCard1(artist = Artist(R.drawable.logo, "Avatar", "10:10"))
 }
 
 @Composable

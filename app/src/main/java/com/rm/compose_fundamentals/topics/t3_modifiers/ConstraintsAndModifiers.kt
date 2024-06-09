@@ -35,7 +35,7 @@ private fun PreviewExample3() {
 @Composable
 private fun Example1() {
     Image(
-        painter = painterResource(id = R.drawable.img),
+        painter = painterResource(id = R.drawable.logo),
         contentDescription = null,
         modifier = Modifier
             // sets min width and height to max value
@@ -49,7 +49,7 @@ private fun Example1() {
 @Composable
 private fun Example2() {
     Image(
-        painter = painterResource(id = R.drawable.img),
+        painter = painterResource(id = R.drawable.logo),
         contentDescription = null,
         modifier = Modifier
             // sets min width and height to max value
@@ -70,7 +70,7 @@ private fun Example2() {
 @Composable
 private fun Example3() {
     Image(
-        painter = painterResource(id = R.drawable.img),
+        painter = painterResource(id = R.drawable.logo),
         contentDescription = null,
         modifier = Modifier
             // clip doesn't modify constraints

@@ -127,8 +127,11 @@ fun LazyListExample2( ) {
     ) {
         // items provide LazyItemScope where we can specify the view to display for each item
         // just like RecyclerView.ViewHolder
-        items(messages) {
-            RowItem(item = it.item)
+        items(
+            items =  messages,
+            key = { message -> message.id }
+        ) { message ->
+            RowItem(item = message.content)
         }
     }
 }
@@ -141,7 +144,18 @@ fun LazyListExample3( ) {
     ) {
         // itemsIndexed is just like forEachIndexed that provides access to index
         itemsIndexed(messages) { index, message ->
-            RowItem(item = "Index: $index, ${message.item}")
+            if (index % 2 == 0) {
+                RowItem(
+                    item = "Index: $index, ${message.content}",
+                    color = Color.Green
+                )
+            } else {
+                RowItem(
+                    item = "Index: $index, ${message.content}",
+                    color = Color.Yellow
+                )
+            }
+
         }
     }
 }
@@ -153,11 +167,11 @@ fun LazyListMultipleViewTypes() {
             .fillMaxSize()
     ) {
         item {
-            RowItem(item = "Title")
+            RowItem(item = "TITLE")
         }
 
         items(5) {
-            RowItem(item = "Item: $it" )
+            RowItem(item = "Item: $it")
         }
 
         itemsIndexed(listOf("apple", "ball", "cat")) { index, string ->
@@ -167,12 +181,15 @@ fun LazyListMultipleViewTypes() {
 }
 
 @Composable
-fun RowItem(item: String) {
+fun RowItem(
+    item: String,
+    color: Color = Color.Cyan
+) {
     Text(
         modifier = Modifier
             .fillMaxWidth()
             .padding(10.dp)
-            .background(Color.Cyan)
+            .background(color)
             .border(1.dp, Color.Black),
         text = item,
         fontSize = 24.sp,
@@ -181,17 +198,14 @@ fun RowItem(item: String) {
     )
 }
 
-class Message(val item: String)
+class Message(
+    val id: Int,
+    val content: String
+)
 
-fun getItems(): List<Message> {
-    val items = mutableListOf<Message>()
-    for (i in 0..50) {
-        items.add(Message("Item: $i"))
-    }
-    return items
-}
+fun getItems(): List<Message> = List(50) { Message(it,"Message: $it") }
+
 val messages = getItems()
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

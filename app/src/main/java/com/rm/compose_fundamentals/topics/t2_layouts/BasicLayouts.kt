@@ -53,7 +53,7 @@ fun UseComposeLayout() {
 fun PreviewBoxLayout() {
     ArtistAvatar(
         artist = Artist(
-            image = R.drawable.img,
+            image = R.drawable.logo,
             name ="Jim Dunlop",
             lastSeen = "3 minutes ago")
     )
@@ -72,7 +72,7 @@ fun ArtistAvatar(artist: Artist) {
 fun PreviewComposeReused() {
     ArtistCardWithImage(
         artist = Artist(
-            image = R.drawable.img,
+            image = R.drawable.logo,
             name ="Jim Dunlop",
             lastSeen = "3 minutes ago")
     )
@@ -97,7 +97,6 @@ fun ArtistCardWithImage(artist: Artist) {
         }
     }
 }
-
 
 class Artist(
     @DrawableRes val image: Int,
