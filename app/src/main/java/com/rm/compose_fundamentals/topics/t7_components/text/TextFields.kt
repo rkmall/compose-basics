@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -27,18 +28,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
-
-@Preview
-@Composable
-fun TextFieldPreview() {
-    TextFieldExample()
-}
-
-@Preview
-@Composable
-fun TextFieldSnackbarPreview() {
-    TextFieldSnackbar()
-}
 
 @Composable
 fun TextFieldExample() {
@@ -103,3 +92,16 @@ fun TextFieldSnackbar() {
         }
     }
 }
+
+@Preview
+@Composable
+fun TextFieldPreview() {
+    TextFieldExample()
+}
+
+@Preview
+@Composable
+fun TextFieldSnackbarPreview() {
+    TextFieldSnackbar()
+}
+

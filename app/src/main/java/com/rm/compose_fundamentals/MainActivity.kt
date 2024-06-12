@@ -40,6 +40,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.rm.compose_fundamentals.topics.t6_navigation.cupcake_example.CupcakeApp
+import com.rm.compose_fundamentals.topics.t6_navigation.cupcake_example.CupcakeScreen
 import com.rm.compose_fundamentals.topics.t8_mvi.SearchTextField
 import com.rm.compose_fundamentals.topics.t8_mvi.SearchViewModel
 import com.rm.compose_fundamentals.ui.theme.ComposefundamentalsTheme
@@ -53,7 +55,7 @@ class MainActivity : ComponentActivity() {
         //val searchViewModel by viewModels<SearchViewModel>()
 
         setContent {
-            ComposefundamentalsTheme {
+            ComposefundamentalsTheme(dynamicColor = false) {
                 //WindowInsetsEdgeToEdge()
                 //WindowInsetsSystemBarsAsPadding()
                 //WindowInsetsStatusBarsAsPadding()
@@ -61,12 +63,14 @@ class MainActivity : ComponentActivity() {
 
                 //WindowInsetsSize()
 
-                HandleIMEInsetPaddingInChild()
+                //HandleIMEInsetPaddingInChild()
                 //HandleIMEInsetPaddingUpTheHierarchy()
 
                 //ConsumeInset()
 
                 //SearchTextField(viewModel = searchViewModel)
+
+                CupcakeApp()
             }
         }
     }
