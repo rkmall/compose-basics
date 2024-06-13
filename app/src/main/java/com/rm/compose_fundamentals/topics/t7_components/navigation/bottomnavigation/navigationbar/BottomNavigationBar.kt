@@ -19,11 +19,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.rm.compose_fundamentals.topics.t7_components.navigation.bottomnavigation.screen.Home
-import com.rm.compose_fundamentals.topics.t7_components.navigation.bottomnavigation.screen.Notification
-import com.rm.compose_fundamentals.topics.t7_components.navigation.bottomnavigation.screen.Post
-import com.rm.compose_fundamentals.topics.t7_components.navigation.bottomnavigation.screen.Profile
-import com.rm.compose_fundamentals.topics.t7_components.navigation.bottomnavigation.screen.Settings
+import com.rm.compose_fundamentals.topics.t7_components.navigation.screen.Home
+import com.rm.compose_fundamentals.topics.t7_components.navigation.screen.Notification
+import com.rm.compose_fundamentals.topics.t7_components.navigation.screen.Post
+import com.rm.compose_fundamentals.topics.t7_components.navigation.screen.Profile
+import com.rm.compose_fundamentals.topics.t7_components.navigation.screen.Settings
 import com.rm.compose_fundamentals.topics.t7_components.navigation.bottomnavigation.usingbottomappbar.BottomNavRoute
 import com.rm.compose_fundamentals.topics.t7_components.navigation.bottomnavigation.usingbottomnavigation.BottomNavItem
 

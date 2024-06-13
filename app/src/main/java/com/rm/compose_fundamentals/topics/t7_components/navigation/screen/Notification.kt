@@ -1,4 +1,4 @@
-package com.rm.compose_fundamentals.topics.t7_components.navigation.bottomnavigation.screen
+package com.rm.compose_fundamentals.topics.t7_components.navigation.screen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -15,12 +15,12 @@ import androidx.compose.ui.unit.sp
 
 @Preview
 @Composable
-fun PreviewPostScreen() {
-    Post()
+fun PreviewMessageScreen() {
+    Notification()
 }
 
 @Composable
-fun Post() {
+fun Notification() {
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
             modifier = Modifier
@@ -30,7 +30,7 @@ fun Post() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "Post",
+                text = "Notification",
                 fontSize = 30.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.Black

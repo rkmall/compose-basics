@@ -1,4 +1,4 @@
-package com.rm.compose_fundamentals.topics.t7_components.navigation.bottomnavigation.screen
+package com.rm.compose_fundamentals.topics.t7_components.navigation.screen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box

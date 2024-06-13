@@ -34,7 +34,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.rm.compose_fundamentals.R
 import com.rm.compose_fundamentals.topics.t2_layouts.Artist
-import com.rm.compose_fundamentals.topics.t2_layouts.ArtistCardWithImage
+import com.rm.compose_fundamentals.topics.t2_layouts.ArtistCard
 import com.rm.compose_fundamentals.ui.theme.md_theme_dark_onBackground
 
 @Preview
@@ -355,7 +355,7 @@ fun MyCard1(artist: Artist, modifier: Modifier = Modifier) {
             .padding(30.dp) // so padding are clickable too
             .background(md_theme_dark_onBackground)
     ) {
-        ArtistCardWithImage(artist = artist)
+        ArtistCard(artist = artist)
     }
 }
 
@@ -367,6 +367,6 @@ fun MyCard2(artist: Artist, modifier: Modifier = Modifier) {
             .clickable {} // padding part is not clickable
             .background(md_theme_dark_onBackground)
     ) {
-        ArtistCardWithImage(artist = artist)
+        ArtistCard(artist = artist)
     }
 }

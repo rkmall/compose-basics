@@ -5,19 +5,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.CornerSize
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.SpanStyle
@@ -28,89 +18,22 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.rm.compose_fundamentals.R
-
+import com.rm.compose_fundamentals.topics.t5_animations.animationusecase.ExpandingTextMessage
+import com.rm.compose_fundamentals.topics.t7_components.card.MessageCard
 
 @Composable
 fun TextOverflowExample(message: String) {
-    var showMore by remember { mutableStateOf(false) }
-    var showLess by remember { mutableStateOf(false) }
-    var maxLines by remember { mutableIntStateOf(2) }
-
-    Card(
-        modifier = Modifier
-            .fillMaxWidth(),
-        shape = MaterialTheme.shapes.large.copy(
-            topStart = CornerSize(0.dp)
-        ),
-        colors = CardDefaults.cardColors(
-            containerColor = Color(0xFF49517F)
+    MessageCard {
+        ExpandingTextMessage(
+            modifier = Modifier.padding(8.dp),
+            message = message,
+            color = Color.White
         )
-    ) {
-        Text(
-            text = message,
-            style = MaterialTheme.typography.bodyLarge
-                .copy(color = Color.White),
-            fontSize = 20.sp,
-            maxLines = maxLines,
-            overflow = TextOverflow.Ellipsis,
-            onTextLayout = { textLayoutResult ->
-                if (textLayoutResult.hasVisualOverflow) {
-                    showMore = true
-                }
-            },
-            modifier = Modifier
-                .padding(8.dp)
-        )
-
-        if (showMore) {
-            TextButton(
-                modifier = Modifier.fillMaxWidth(),
-                onClick = {
-                    maxLines = Int.MAX_VALUE
-                    showLess = true
-                    showMore = false
-                }
-            ) {
-                Text(
-                    text = "More",
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White,
-                    textAlign = TextAlign.End,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp)
-                )
-            }
-        }
-
-        if (showLess) {
-            TextButton(
-                modifier = Modifier.fillMaxWidth(),
-                onClick = {
-                    maxLines = 2
-                    showLess = false
-                    showMore = true
-                }
-            ) {
-                Text(
-                    text = "Less",
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White,
-                    textAlign = TextAlign.End,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp)
-                )
-            }
-        }
     }
 }
 
@@ -175,7 +98,7 @@ fun fontFamily(): FontFamily {
 @Preview
 @Composable
 private fun PreviewTextStylingSimple() {
-    TextOverflowExample("Hello there, how are you? Just checking the text overflow and more button to show where there is more than two lines.")
+    TextOverflowExample("Hello there, how are you? Just checking the text overflow and \"More\" button to show when there is more than three lines. Some random text, some random text, some random text, some random text.")
 }
 
 @Preview
